@@ -15,6 +15,29 @@ public class User {
     private String password;
     private String user;
     private String id_User;
+    
+    public User(){
+        
+    }
+
+    public User(String name, String lastname, String email, String password, String user, String id_User) {
+        this.name = name;
+        this.lastname = lastname;
+        this.email = email;
+        this.password = password;
+        this.user = user;
+        this.id_User = id_User;
+    }
+
+    public User(String name, String lastname, String email, String user, String id_User) {
+        this.name = name;
+        this.lastname = lastname;
+        this.email = email;
+        this.user = user;
+        this.id_User = id_User;
+    }
+    
+    
 
     public String getName() {
         return name;

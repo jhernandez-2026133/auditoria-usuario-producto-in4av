@@ -39,6 +39,14 @@ public class ConexionDB {
             return instanciaConexionDB;
             
     }
+
+    public Connection getConnection() {
+        return connection;
+    }
+
+    public void setConnection(Connection connection) {
+        this.connection = connection;
+    }
     
     
     
