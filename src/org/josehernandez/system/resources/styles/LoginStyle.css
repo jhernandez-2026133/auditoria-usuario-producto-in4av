@@ -1,0 +1,55 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 18 ago 2026, 15:58:50
+    Author     : informatica
+*/
+
+
+.etiqueta{
+    -fx-font-size: 20px;
+    
+}
+
+.campo{
+    -fx-border-color: #79db56;
+    -fx-text-fill: #6c9926;
+    -fx-background-color: white;
+    -fx-border-width: 2px;
+    -fx-border-width: 5px;
+}
+
+.link{
+    -fx-text-fill: darkcyan;   
+    -fx-font-size: 20px;
+    
+}
+
+.link:hover{
+    -fx-text-fill: black;
+
+}
+.link:pressed{
+    -fx-text-fill: #ff0000;
+
+}
+
+#btn-login{
+    -fx-background-color: #317da7;
+    -fx-border-color: #0036aa;
+    -fx-text-fill:white;
+    -fx-font-size:20px;
+    -fx-font-weight:bold;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 10px;
+}
+#btn-login:hover{
+    -fx-background-color: #319ea7;
+    -fx-border-color: #2f367c;
+}
+#btn-login:pressed{
+    -fx-background-color: black;
+    -fx-border-color: #2f3c92;
+}
