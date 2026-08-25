@@ -10,6 +10,8 @@ import org.josehernandez.system.model.User;
  *
  * @author informatica
  */
-public class UserInterface {
+public interface UserInterface {
+    
         void create (User user);
+    
 }
