@@ -11,12 +11,12 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" stylesheets="@../resources/styles/LoginStyle.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.josehernandez.system.controller.LoginController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" stylesheets="@../resources/styles/LoginStyle.css" xmlns="http://javafx.com/javafx/21.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.josehernandez.system.controller.LoginController">
    <padding>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
    </padding>
    <children>
-      <VBox alignment="TOP_CENTER" prefHeight="480.0" prefWidth="380.0" spacing="15.0">
+      <VBox alignment="CENTER" prefHeight="480.0" prefWidth="380.0" spacing="15.0">
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -34,6 +34,6 @@
             </HBox>
          </children>
       </VBox>
-      <Button alignment="CENTER" mnemonicParsing="false" styleClass="btn-login" text="Iniciar sesion " textOverrun="CLIP" />
+      <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="92.0" styleClass="btn-login" text="Iniciar sesion " />
    </children>
 </VBox>

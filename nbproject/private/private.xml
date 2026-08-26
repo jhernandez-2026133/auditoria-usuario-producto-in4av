@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Informatica/Desktop/Jose%20Hernandez%202026133-IN4AV/B4/Semana2/auditoria-usuario-producto/src/org/josehernandez/system/model/User.java</file>
-            <file>file:/C:/Users/Informatica/Desktop/Jose%20Hernandez%202026133-IN4AV/B4/Semana2/auditoria-usuario-producto/src/org/josehernandez/system/repository/UserInterface.java</file>
-            <file>file:/C:/Users/Informatica/Desktop/Jose%20Hernandez%202026133-IN4AV/B4/Semana2/auditoria-usuario-producto/src/org/josehernandez/system/repository/UserRepository.java</file>
-            <file>file:/C:/Users/Informatica/Desktop/Jose%20Hernandez%202026133-IN4AV/B4/Semana2/auditoria-usuario-producto/src/org/josehernandez/system/resources/styles/LoginStyle.css</file>
+            <file>file:/C:/Users/Informatica/Desktop/Jose%20Hernandez%202026133-IN4AV/B4/Semana2/auditoria-usuario-producto/src/org/josehernandez/system/controller/RegisterController.java</file>
+            <file>file:/C:/Users/Informatica/Desktop/Jose%20Hernandez%202026133-IN4AV/B4/Semana2/auditoria-usuario-producto/src/org/josehernandez/system/utils/ViewFactory.java</file>
+            <file>file:/C:/Users/Informatica/Desktop/Jose%20Hernandez%202026133-IN4AV/B4/Semana2/auditoria-usuario-producto/src/org/josehernandez/system/resources/styles/RegisterUserStyles.css</file>
+            <file>file:/C:/Users/Informatica/Desktop/Jose%20Hernandez%202026133-IN4AV/B4/Semana2/auditoria-usuario-producto/src/org/josehernandez/system/ClasePrincipal.java</file>
+            <file>file:/C:/Users/Informatica/Desktop/Jose%20Hernandez%202026133-IN4AV/B4/Semana2/auditoria-usuario-producto/src/org/josehernandez/system/controller/LoginController.java</file>
         </group>
     </open-files>
 </project-private>
