@@ -8,6 +8,9 @@ package org.josehernandez.system.service;
  *
  * @author informatica
  */
-public class UserStatus {
-    
+public enum UserStatus {
+    USER_CREATED,
+    ERROR_USER_CREATE,
+    EMPTY_FIELDS,
+    USER_EXISTS
 }
