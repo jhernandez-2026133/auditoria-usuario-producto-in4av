@@ -14,4 +14,6 @@ public interface UserInterface {
     
         void create (User user);
     
+        User findByUserOrEmail(String identifier);
+    
 }

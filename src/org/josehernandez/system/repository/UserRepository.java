@@ -5,6 +5,7 @@
 package org.josehernandez.system.repository;
 
 import java.sql.CallableStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import org.josehernandez.system.config.ConexionDB;
 import org.josehernandez.system.model.User;
@@ -32,5 +33,35 @@ public class UserRepository implements UserInterface{
         }
 
 }
+
+    @Override
+    public User findByUserOrEmail(String identifier) {
+        User userFound = null;
+        try {
+            callSP = conexionDB.getConnection().prepareCall("{call sp_find_user_by_identifier(?)}");
+            callSP.setString(1, identifier);
+
+            boolean hayResultados = callSP.execute();
+            if (hayResultados) {
+                try (ResultSet resultSet = callSP.getResultSet()) {
+                    if (resultSet.next()) {
+                        userFound = new User(
+                                resultSet.getString("name"),
+                                resultSet.getString("lastname"),
+                                resultSet.getString("email"),
+                                resultSet.getString("user"),
+                                resultSet.getString("id_user")
+                        );
+                    }
+                }
+            }
+            callSP.close();
+        } catch (SQLException e) {
+            System.out.println("Error al buscar usuario");
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return userFound;
+    }
 
 }
