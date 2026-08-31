@@ -24,9 +24,9 @@
                </image>
             </ImageView>
             <Label styleClass="etiqueta" text="Ingrese su usuario" />
-            <TextField styleClass="campo" />
+            <TextField fx:id="txtUser" styleClass="campo" />
             <Label styleClass="etiqueta" text="Ingrese su contraseña" />
-            <PasswordField styleClass="campo" />
+            <PasswordField fx:id="pwdPassword" styleClass="campo" />
             <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <Hyperlink onMouseClicked="#onRegister" styleClass="link" text="No tienes cuenta? Registrate aqui." />
@@ -34,6 +34,6 @@
             </HBox>
          </children>
       </VBox>
-      <Button mnemonicParsing="false" prefHeight="35.0" prefWidth="92.0" styleClass="btn-login" text="Iniciar sesion " />
+      <Button fx:id="btnLogin" mnemonicParsing="false" onMouseClicked="#onLogin" prefHeight="35.0" prefWidth="92.0" styleClass="btn-login" text="Iniciar sesion " />
    </children>
 </VBox>

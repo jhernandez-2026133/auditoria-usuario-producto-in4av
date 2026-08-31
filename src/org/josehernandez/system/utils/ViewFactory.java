@@ -7,10 +7,16 @@ package org.josehernandez.system.utils;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Scene;
 import org.josehernandez.system.ClasePrincipal;
+import org.josehernandez.system.config.ConexionDB;
+import org.josehernandez.system.service.UserService;
+import org.josehernandez.system.service.UserStatus;
 
 /**
  *
@@ -18,6 +24,7 @@ import org.josehernandez.system.ClasePrincipal;
  */
 public class ViewFactory {
     private final String PATH_VIEWS  = "/org/josehernandez/system/view/";
+    private final AlertInformation alertInfo = new AlertInformation();
 
     public Scene LoadFileFXML(String nameFile, int width, int height) {
         String pathOffFile = PATH_VIEWS + nameFile;
@@ -65,5 +72,39 @@ public class ViewFactory {
     }
     public void viewLogin(){
         loadScene("login");
+    }
+    
+    public void registerUser(String user, String name, String lastName, String email, String password){
+        UserService userService = new UserService();
+        UserStatus status = userService.createUser(user, name, lastName, email, password);
+        
+        if(status == UserStatus.USER_CREATED){
+            alertInfo.viewAlert("INFO", "REGISTRO EXITOSO", "USUARIO CREADO", "El usuario " + user + " fue creado correctamente.");
+            viewLogin();
+        } else {
+            alertInfo.viewAlert("ERROR", "ERROR AL REGISTRAR", "ERROR AL CREAR USUARIO", "No se pudo crear el usuario, intenta nuevamente.");
+        }
+    }
+    
+    public void loginUser(String user, String password){
+        String sql = "SELECT user FROM Users WHERE user = ? AND password = ?";
+        
+        try (PreparedStatement statement = ConexionDB.getInstanciaConexionDB().getConnection().prepareStatement(sql)) {
+            statement.setString(1, user);
+            statement.setString(2, password);
+            
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    alertInfo.viewAlert("INFO", "Bienvenido", "Bienvenido " + user, "Has iniciado sesión correctamente.");
+                } else {
+                    alertInfo.viewAlert("ERROR", "ERROR DE INICIO DE SESION", "USUARIO O CONTRASEÑA INCORRECTOS", "Verifica tus datos e intenta nuevamente.");
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al iniciar sesion");
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+            alertInfo.viewAlert("ERROR", "ERROR DE CONEXION", "ERROR AL CONSULTAR LA BASE DE DATOS", "Ocurrio un error, intenta nuevamente.");
+        }
     }
 }

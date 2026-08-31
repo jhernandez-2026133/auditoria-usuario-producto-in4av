@@ -16,7 +16,7 @@ public class UserService {
     
     public UserStatus createUser(String user, String name, String lastName, String email, String password){
         try{
-            User newUser = new User(name,email,lastName,password, user);
+            User newUser = new User(name, lastName, email, password, user, null);
             userRepo.create(newUser);
             return UserStatus.USER_CREATED;
         }  catch(Exception e){

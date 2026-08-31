@@ -99,6 +99,8 @@ public class RegisterController implements Initializable{
         
     }
     
+    ViewFactory viewFacto = new ViewFactory();
+    viewFacto.registerUser(user, name, lastname, email, password);
     
     }
 

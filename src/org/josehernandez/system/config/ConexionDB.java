@@ -33,6 +33,7 @@ public class ConexionDB {
             System.out.println("Error padre" + e.getMessage());
         }
     }
+    
     public static ConexionDB getInstanciaConexionDB(){
             if (instanciaConexionDB == null) 
             instanciaConexionDB = new ConexionDB();
