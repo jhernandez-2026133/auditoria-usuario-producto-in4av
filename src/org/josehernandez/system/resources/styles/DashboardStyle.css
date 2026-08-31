@@ -1,0 +1,33 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+
+.titulo-dashboard{
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #317da7;
+}
+
+.etiqueta-dashboard{
+    -fx-font-size: 16px;
+    -fx-text-fill: #6c9926;
+}
+
+.btn-logout{
+    -fx-background-color: #317da7;
+    -fx-border-color: #0036aa;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-border-radius: 8px;
+    -fx-background-radius: 10px;
+}
+.btn-logout:hover{
+    -fx-background-color: #319ea7;
+    -fx-border-color: #2f367c;
+}
+.btn-logout:pressed{
+    -fx-background-color: black;
+    -fx-border-color: #2f3c92;
+}
