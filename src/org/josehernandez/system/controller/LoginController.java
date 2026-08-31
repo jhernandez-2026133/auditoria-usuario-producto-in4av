@@ -11,6 +11,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import org.josehernandez.system.service.AuthenticationService;
+import org.josehernandez.system.service.AuthenticationStatus;
 import org.josehernandez.system.utils.AlertInformation;
 import org.josehernandez.system.utils.Validations;
 import org.josehernandez.system.utils.ViewFactory;
@@ -24,6 +26,7 @@ public class LoginController implements Initializable {
 
     private final Validations validate = new Validations();
     private final AlertInformation alertInfo = new AlertInformation();
+    private final AuthenticationService authService = new AuthenticationService();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -44,8 +47,18 @@ public class LoginController implements Initializable {
             return;
         }
 
-        ViewFactory viewFacto = new ViewFactory();
-        viewFacto.loginUser(user, password);
+        AuthenticationStatus status = authService.login(user, password);
+
+        switch (status) {
+            case NOT_EXIST_USER -> alertInfo.viewAlert("ERROR", "CUENTA NO ENCONTRADA", "EL USUARIO NO EXISTE",
+                    "No existe una cuenta con ese usuario o correo. Debes registrarte primero.");
+            case INVALID_PASSWORD -> alertInfo.viewAlert("ERROR", "ERROR DE INICIO DE SESION", "CONTRASEÑA INCORRECTA",
+                    "La contraseña ingresada es incorrecta. Intenta nuevamente.");
+            case LOGIN_SUCCESS -> {
+                ViewFactory viewFacto = new ViewFactory();
+                viewFacto.viewDashboard(authService.getAuthenticatedUser());
+            }
+        }
     }
 
 }
