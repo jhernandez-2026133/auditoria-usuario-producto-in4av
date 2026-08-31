@@ -7,14 +7,13 @@ package org.josehernandez.system.utils;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.net.URL;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.JavaFXBuilderFactory;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import org.josehernandez.system.ClasePrincipal;
-import org.josehernandez.system.config.ConexionDB;
+import org.josehernandez.system.controller.DashboardController;
+import org.josehernandez.system.model.User;
 import org.josehernandez.system.service.UserService;
 import org.josehernandez.system.service.UserStatus;
 
@@ -86,25 +85,31 @@ public class ViewFactory {
         }
     }
     
-    public void loginUser(String user, String password){
-        String sql = "SELECT user FROM Users WHERE user = ? AND password = ?";
-        
-        try (PreparedStatement statement = ConexionDB.getInstanciaConexionDB().getConnection().prepareStatement(sql)) {
-            statement.setString(1, user);
-            statement.setString(2, password);
-            
-            try (ResultSet resultSet = statement.executeQuery()) {
-                if (resultSet.next()) {
-                    alertInfo.viewAlert("INFO", "Bienvenido", "Bienvenido " + user, "Has iniciado sesión correctamente.");
-                } else {
-                    alertInfo.viewAlert("ERROR", "ERROR DE INICIO DE SESION", "USUARIO O CONTRASEÑA INCORRECTOS", "Verifica tus datos e intenta nuevamente.");
-                }
-            }
-        } catch (SQLException e) {
-            System.out.println("Error al iniciar sesion");
+    public void viewDashboard(User user){
+        try {
+            String pathOffFile = PATH_VIEWS + "DashboardView.fxml";
+
+            FXMLLoader loaderFXML = new FXMLLoader();
+            URL urlFile = ClasePrincipal.class.getResource(pathOffFile);
+            loaderFXML.setBuilderFactory(new JavaFXBuilderFactory());
+            loaderFXML.setLocation(urlFile);
+
+            Parent root = loaderFXML.load();
+
+            DashboardController controller = loaderFXML.getController();
+            controller.setUser(user);
+
+            Scene scene = new Scene(root, 600, 450);
+
+            SceneManager.getInstanciaScenerManager().getStagePrincipal().setTitle("DASHBOARD");
+            SceneManager.getInstanciaScenerManager().getStagePrincipal().setResizable(true);
+            SceneManager.getInstanciaScenerManager().changeScene(scene);
+
+        } catch (IOException e) {
+            System.out.println("Error al cargar el Dashboard");
             System.out.println(e.getMessage());
             e.printStackTrace();
-            alertInfo.viewAlert("ERROR", "ERROR DE CONEXION", "ERROR AL CONSULTAR LA BASE DE DATOS", "Ocurrio un error, intenta nuevamente.");
+            alertInfo.viewAlert("ERROR", "ERROR AL CARGAR", "ERROR AL ABRIR EL DASHBOARD", "Ocurrio un error, intenta nuevamente.");
         }
     }
 }
